@@ -1,13 +1,14 @@
-from flask import Flask
 import os
-
+from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Flask inside Docker!!"
+def main():
+    return "Welcome!"
 
+@app.route('/how are you')
+def hello():
+    return 'I am good, how about you?'
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True,host='0.0.0.0',port=port)
+    app.run(host="0.0.0.0", port=8080)
